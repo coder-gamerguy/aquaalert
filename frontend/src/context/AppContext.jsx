@@ -6,9 +6,7 @@ import { zonesAPI, alertsAPI } from '../utils/api';
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [zones, 
-    
-  ] = useState([]);
+  const [zones, setZones ] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [socket, setSocket] = useState(null);
