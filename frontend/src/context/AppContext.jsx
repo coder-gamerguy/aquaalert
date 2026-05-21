@@ -6,7 +6,9 @@ import { zonesAPI, alertsAPI } from '../utils/api';
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [zones, setZones] = useState([]);
+  const [zones, 
+    
+  ] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [socket, setSocket] = useState(null);
@@ -37,8 +39,8 @@ export function AppProvider({ children }) {
         zonesAPI.list(),
         alertsAPI.list({ limit: 15 }),
       ]);
-      setZones(zonesRes.data.zones);
-      setAlerts(alertsRes.data.alerts);
+      setZones(zonesRes.data.zones || zonesRes.data);
+      setAlerts(alertsRes.data.alerts || alertsRes.data);
     } catch (e) {
       console.error('Failed to load data:', e);
     } finally {
