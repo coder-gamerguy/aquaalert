@@ -3,7 +3,12 @@ const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const TAMALE_ZONES = [
   { slug: 'lamashegu',   name: 'Lamashegu',          area_name: 'Lamashegu Community',     lat: 9.4214,  lng: -0.8358, status: 'open',   flow_pct: 88 },
